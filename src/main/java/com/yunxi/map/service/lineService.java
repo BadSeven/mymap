@@ -1,7 +1,8 @@
 package com.yunxi.map.service;
 
 import com.yunxi.map.dao.LineMapper;
-import com.yunxi.map.entity.line;
+
+import com.yunxi.map.entity.Line;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,45 +19,68 @@ public class lineService {
     @Autowired
     private LineMapper lineMapper;
 
-    /***
-     *获取全部
+    /**
+     * 获取全部线路
      * @return
      * @throws Exception
      */
-    public List<line> getAll() throws Exception{
-       return lineMapper.getAll();
+    public List<Line> getAllLine() throws Exception{
+        return  lineMapper.getAllLine();
     }
 
-    /***
-     *
-     * @param a1
-     * @param b1
-     * @param a2
-     * @param b2
-     * @param direction
+
+    /**
+     * 添加一个线路
+     * @param line
      * @return
      * @throws Exception
      */
     @Transactional
-    public boolean addline(String a1,String b1,String a2,String b2,int direction) throws Exception{
-        line arg = new line();
-        arg.setLatitudeA(a1);
-        arg.setLongitudeA(b1);
-        arg.setLatitudeB(a2);
-        arg.setLongitudeB(b2);
-        arg.setDirection(direction);
-        return lineMapper.addline(arg);
+    public boolean addLine(Line line) throws Exception{
+        return lineMapper.addLine(line);
+    }
+
+    /**
+     * 更新一个线路
+     * @param line
+     * @return
+     * @throws Exception
+     */
+    @Transactional
+    public boolean updateLine(Line line) throws Exception{
+        return lineMapper.updateLine(line);
+
     }
 
     /***
-     * 根据id删除一条数据
+     * 删除一个线路
      * @param id
      * @return
      * @throws Exception
      */
     @Transactional
-    public boolean deleteline(int id) throws Exception{
-        return lineMapper.deleteline(id);
+    public boolean deleteLine(int id) throws Exception{
+        return lineMapper.deleteLine(id);
     }
 
+    /**
+     * 获取一个线路
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    public Line getLine(int id) throws Exception{
+        return lineMapper.getLine(id);
+    }
+
+    /**
+     * 根据点的id获取线路
+     * @param id
+     * @return
+     * @throws Exception
+     */
+    @Transactional
+    public List<Line> getLineByPointid(int id) throws Exception{
+        return lineMapper.getLineByPointid(id);
+    }
 }

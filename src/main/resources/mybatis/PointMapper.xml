@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunxi.map.dao.PointMapper" >
+
+    <select id="getAllPoint" resultType="Point" >
+        SELECT * from point ;
+    </select>
+    <insert id="addPoint" parameterType="Point">
+        INSERT INTO point (longitude,latitude,description,addtime) VALUE (#{longitude},#{latitude},#{description},now())
+    </insert>
+    <delete id="deletePointById" parameterType="int">
+        DELETE from point where id=#{id};
+    </delete>
+    <update id="updatePoint" parameterType="Point">
+      UPDATE point
+        <set>
+        <if test="longitude!=null">
+          longitude=#{longitude}
+        </if>
+        <if test="latitude!=null">
+          latitude=#{latitude}
+        </if>
+        <if test="description!=null">
+            description=#{description}
+        </if>
+        <if test="addtime!=null">
+            addtime=#{addtime}
+        </if>
+        </set>
+    </update>
+
+
+</mapper>

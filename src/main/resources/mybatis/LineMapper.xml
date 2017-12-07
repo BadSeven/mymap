@@ -1,26 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yunxi.map.dao.LineMapper">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunxi.map.dao.LineMapper" >
+  <select id="getAllLine" resultType="Line">
+    SELECT * from line;
+  </select>
+  <insert id="addLine" parameterType="Line">
+    INSERT  INTO line (sid,eid,name,direction,description,distance,addtime) VALUES (#{sid},#{eid},#{name},#{direction},#{description},#{distance},now())
+  </insert>
+  <update id="updateLine" parameterType="Line">
+    UPDATE line
+    <set>
+      <if test="sid!=null">
+        sid=#{sid}
+      </if>
+      <if test="eid!=null">
+        eid=#{eid}
+      </if>
+      <if test="direction!=null">
+        direction=#{direction}
+      </if>
+      <if test="description!=null">
+        description=#{description}
+      </if>
+      <if test="distance!=null">
+        distance=#{distance}
+      </if>
+      <if test="addtime!=null">
+        sid=#{addtime}
+      </if>
+    </set>
+  </update>
+  <delete id="deleteLine" parameterType="int">
+    DELETE from line WHERE  id=#{id};
+  </delete>
+  <select id="getLine" parameterType="int" resultType="Line">
+    SELECT * FROM  line WHERE id=#{id}
+  </select>
+  <select id="getLineByPointid" parameterType="int" resultType="Line">
+    SELECT * from line where sid=#{id} or eid=#{id}
+  </select>
 
-
-    <update id="update">
-        UPDATE account set money=#{money} WHERE id=#{id}
-    </update>
-
-    <select id="getUserById" resultType="mapUser" parameterType="mapUser">
-        select * from user where id=#{id}
-    </select>
-
-    <select id="getAll" resultType="line" >
-        select * from line ;
-    </select>
-
-    <insert id="addLine" parameterType="line" >
-        INSERT  INTO line (longitudeA,latitudeA,longitudeB,latitudeB,direction) VALUE (#{longitudeA},#{latitudeA},#{longitudeB},#{latitudeB},#{direction});
-    </insert>
-
-    <delete id="deleteLine" parameterType="int">
-        DELETE  from line where id=#{id}
-    </delete>
 </mapper>
