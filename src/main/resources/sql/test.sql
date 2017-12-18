@@ -10,10 +10,38 @@ Target Server Type    : MYSQL
 Target Server Version : 50614
 File Encoding         : 65001
 
-Date: 2017-12-07 17:59:27
+Date: 2017-12-18 18:03:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for datainfo
+-- ----------------------------
+DROP TABLE IF EXISTS `datainfo`;
+CREATE TABLE `datainfo` (
+  `infoid` int(11) NOT NULL AUTO_INCREMENT,
+  `userCode` varchar(255) DEFAULT NULL,
+  `startCityName` varchar(255) DEFAULT NULL,
+  `PassCityName` varchar(255) DEFAULT NULL,
+  `StartName_ch` varchar(255) DEFAULT NULL,
+  `PassCityName_ch` varchar(255) DEFAULT NULL,
+  `StartX_axis` int(255) DEFAULT NULL,
+  `StartY_axis` int(255) DEFAULT NULL,
+  `PassX_axis` int(255) DEFAULT NULL,
+  `PassY_axis` int(255) DEFAULT NULL,
+  `DeviceName` varchar(255) DEFAULT NULL,
+  `Start_deviceInfo` varchar(255) DEFAULT NULL,
+  `Pass_deviveInfo` varchar(255) DEFAULT NULL,
+  `creatIndoTime` timestamp NULL DEFAULT NULL,
+  `isdelete` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`infoid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of datainfo
+-- ----------------------------
+INSERT INTO `datainfo` VALUES ('1', '1', '12', '12', null, '22', '2', '2', '3', '3', '5200', '1', '2', '2017-12-18 17:48:15', '1');
 
 -- ----------------------------
 -- Table structure for line
@@ -28,14 +56,14 @@ CREATE TABLE `line` (
   `description` varchar(255) DEFAULT NULL,
   `distance` varchar(255) NOT NULL,
   `addtime` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `sid` (`sid`),
+  CONSTRAINT `line_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `point` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of line
 -- ----------------------------
-INSERT INTO `line` VALUES ('12', '1', '2', '', '1', '最远的距离', '1024', '2017-12-07 17:49:29');
-INSERT INTO `line` VALUES ('14', '1', '2', '很远很远', '1', '最远的距离', '1024', '2017-12-07 17:58:11');
 
 -- ----------------------------
 -- Table structure for muser
@@ -55,8 +83,6 @@ CREATE TABLE `muser` (
 -- ----------------------------
 -- Records of muser
 -- ----------------------------
-INSERT INTO `muser` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '0', '16582127007', 'lvbingzz@qq.com', '2017-12-07 16:47:08');
-INSERT INTO `muser` VALUES ('2', 'seven', 'lovemlm', '1', '15682127007', 'lvbingzz@163.com', '2017-12-07 16:57:15');
 
 -- ----------------------------
 -- Table structure for point
@@ -74,6 +100,3 @@ CREATE TABLE `point` (
 -- ----------------------------
 -- Records of point
 -- ----------------------------
-INSERT INTO `point` VALUES ('1', '84.716322', '44.430699', '这个地方是我曾经最想去的地方..', '2017-12-07 17:08:45');
-INSERT INTO `point` VALUES ('2', '116.793285', '33.976001', '家在的地方', '2017-12-07 17:13:04');
-
