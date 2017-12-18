@@ -4,6 +4,9 @@ import com.yunxi.map.dao.LineMapper;
 
 import com.yunxi.map.entity.Line;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +27,7 @@ public class lineService {
      * @return
      * @throws Exception
      */
+    @Cacheable("cache")
     public List<Line> getAllLine() throws Exception{
         return  lineMapper.getAllLine();
     }
@@ -36,6 +40,7 @@ public class lineService {
      * @throws Exception
      */
     @Transactional
+    //@CachePut("cache")
     public boolean addLine(Line line) throws Exception{
         return lineMapper.addLine(line);
     }
@@ -47,6 +52,7 @@ public class lineService {
      * @throws Exception
      */
     @Transactional
+    //@CachePut("cache")
     public boolean updateLine(Line line) throws Exception{
         return lineMapper.updateLine(line);
 
@@ -59,6 +65,7 @@ public class lineService {
      * @throws Exception
      */
     @Transactional
+    //@CacheEvict("cache")
     public boolean deleteLine(int id) throws Exception{
         return lineMapper.deleteLine(id);
     }

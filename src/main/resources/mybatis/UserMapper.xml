@@ -3,13 +3,13 @@
 <mapper namespace="com.yunxi.map.dao.UserMapper" >
 
     <select id="userLogin" resultType="mUser" parameterType="mUser">
-      SELECT * FROM muser WHERE uname=#{uname} and pass=md5(#{pass});
+          SELECT * FROM muser WHERE uname=#{uname} and pass=md5(#{pass});
     </select>
     <insert id="addUser" parameterType="mUser">
-        INSERT  INTO muser (uname, pass, role, phone, email, addtime)  VALUE (#{uname}, #{pass},#{role},#{phone},#{email}, now())
+          INSERT  INTO muser (uname, pass, role, phone, email, addtime)  VALUE (#{uname}, md5(#{pass}),#{role},#{phone},#{email}, now())
     </insert>
     <select id="isExist" parameterType="String" resultType="int">
-      select COUNT(*) from muser WHERE uname=#{username};
+          select COUNT(*) from muser WHERE uname=#{username};
     </select>
 
 </mapper>
