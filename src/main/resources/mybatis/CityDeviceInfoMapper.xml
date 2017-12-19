@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yunxi.map.dao.CityDeviceInfoMapper" >
+    <select id="getall" resultType="CityDeviceInfo">
+        SELECT * from citydeviceinfo ;
+    </select>
+    <select id="getdeviceinfobyid" resultType="CityDeviceInfo" parameterType="int">
+        SELECT * FROM citydeviceinfo where id=#{id}
+    </select>
+    <insert id="addinfo" parameterType="CityDeviceInfo">
+    INSERT  INTO (cityName, cityName_ch, deviceInfo, IsdeleteDevice, creatIndoTime) VALUE (#{cityName}, #{cityName_ch}, #{deviceInfo}, #{sdeleteDevice}, new())
+    </insert>
+    <delete id="delinfo" parameterType="int">
+        DELETE  FROM citydeviceinfo WHERE id=#{id}
+    </delete>
+    <update id="updateinfo" parameterType="CityDeviceInfo">
+      UPDATE citydeviceinfo
+      <set>
+          <if test="cityName!=null and cityName=''">cityName=#{cityName}</if>
+          <if test="cityName_ch!=null and cityName_ch=''">cityName_ch=#{cityName_ch}</if>
+          <if test="deviceInfo!=null and deviceInfo=''">deviceInfo=#{deviceInfo}</if>
+          <if test="IsdeleteDevice!=null and IsdeleteDevice=''">IsdeleteDevice=#{IsdeleteDevice}</if>
+          <if test="creatIndoTime!=null and creatIndoTime=''">creatIndoTime=#{creatIndoTime}</if>
+      </set>
+        WHERE id=#{id}
+    </update>
+</mapper>
