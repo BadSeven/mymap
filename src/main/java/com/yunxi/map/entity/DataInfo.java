@@ -11,7 +11,8 @@ public class DataInfo {
 
 
     private int infoid;
-    private String UserCode;
+    private String userCode;
+    private String startCityName;
     private String PassCityName;
     private String StartName_ch;
     private String PassCityName_ch;
@@ -24,46 +25,6 @@ public class DataInfo {
     private String Pass_deviveInfo;
     private Data creatIndoTime;
     private String isdelete;
-    @Override
-    public String toString() {
-        return "DataInfo{" +
-                "infoid=" + infoid +
-                ", UserCode='" + UserCode + '\'' +
-                ", PassCityName='" + PassCityName + '\'' +
-                ", StartName_ch='" + StartName_ch + '\'' +
-                ", PassCityName_ch='" + PassCityName_ch + '\'' +
-                ", StartX_axis=" + StartX_axis +
-                ", StartY_axis=" + StartY_axis +
-                ", PassX_axis=" + PassX_axis +
-                ", PassY_axis=" + PassY_axis +
-                ", DeviceName='" + DeviceName + '\'' +
-                ", Start_deviceInfo='" + Start_deviceInfo + '\'' +
-                ", Pass_deviveInfo='" + Pass_deviveInfo + '\'' +
-                ", creatIndoTime='" + creatIndoTime + '\'' +
-                ", isdelete='" + isdelete + '\'' +
-                '}';
-    }
-
-
-
-    public DataInfo(int infoid, String userCode, String passCityName, String startName_ch, String passCityName_ch, int startX_axis, int startY_axis, int passX_axis, int passY_axis, String deviceName, String start_deviceInfo, String pass_deviveInfo, Data creatIndoTime, String isdelete) {
-        this.infoid = infoid;
-        UserCode = userCode;
-        PassCityName = passCityName;
-        StartName_ch = startName_ch;
-        PassCityName_ch = passCityName_ch;
-        StartX_axis = startX_axis;
-        StartY_axis = startY_axis;
-        PassX_axis = passX_axis;
-        PassY_axis = passY_axis;
-        DeviceName = deviceName;
-        Start_deviceInfo = start_deviceInfo;
-        Pass_deviveInfo = pass_deviveInfo;
-        this.creatIndoTime = creatIndoTime;
-        this.isdelete = isdelete;
-    }
-
-
 
     public int getInfoid() {
         return infoid;
@@ -74,11 +35,19 @@ public class DataInfo {
     }
 
     public String getUserCode() {
-        return UserCode;
+        return userCode;
     }
 
     public void setUserCode(String userCode) {
-        UserCode = userCode;
+        this.userCode = userCode;
+    }
+
+    public String getStartCityName() {
+        return startCityName;
+    }
+
+    public void setStartCityName(String startCityName) {
+        this.startCityName = startCityName;
     }
 
     public String getPassCityName() {
@@ -175,5 +144,47 @@ public class DataInfo {
 
     public void setIsdelete(String isdelete) {
         this.isdelete = isdelete;
+    }
+
+    @Override
+    public String toString() {
+        return "DataInfo{" +
+                "infoid=" + infoid +
+                ", userCode='" + userCode + '\'' +
+                ", startCityName='" + startCityName + '\'' +
+                ", PassCityName='" + PassCityName + '\'' +
+                ", StartName_ch='" + StartName_ch + '\'' +
+                ", PassCityName_ch='" + PassCityName_ch + '\'' +
+                ", StartX_axis=" + StartX_axis +
+                ", StartY_axis=" + StartY_axis +
+                ", PassX_axis=" + PassX_axis +
+                ", PassY_axis=" + PassY_axis +
+                ", DeviceName='" + DeviceName + '\'' +
+                ", Start_deviceInfo='" + Start_deviceInfo + '\'' +
+                ", Pass_deviveInfo='" + Pass_deviveInfo + '\'' +
+                ", creatIndoTime=" + creatIndoTime +
+                ", isdelete='" + isdelete + '\'' +
+                '}';
+    }
+
+    public DataInfo(int infoid, String userCode, String startCityName, String passCityName, String startName_ch, String passCityName_ch, int startX_axis, int startY_axis, int passX_axis, int passY_axis, String deviceName, String start_deviceInfo, String pass_deviveInfo, Data creatIndoTime, String isdelete) {
+        this.infoid = infoid;
+        this.userCode = userCode;
+        this.startCityName = startCityName;
+        PassCityName = passCityName;
+        StartName_ch = startName_ch;
+        PassCityName_ch = passCityName_ch;
+        StartX_axis = startX_axis;
+        StartY_axis = startY_axis;
+        PassX_axis = passX_axis;
+        PassY_axis = passY_axis;
+        DeviceName = deviceName;
+        Start_deviceInfo = start_deviceInfo;
+        Pass_deviveInfo = pass_deviveInfo;
+        this.creatIndoTime = creatIndoTime;
+        this.isdelete = isdelete;
+    }
+
+    public DataInfo() {
     }
 }

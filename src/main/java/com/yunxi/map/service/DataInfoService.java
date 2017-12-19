@@ -25,4 +25,19 @@ public class DataInfoService {
     {
        return mapper.getAllDateInfo();
     }
+
+    public void delInfo(int infoid){
+        mapper.delInfo(infoid);
+    }
+
+    public void updateinfo(DataInfo dataInfo){
+        mapper.updateinfo(dataInfo);
+    }
+
+    public DataInfo getinfobyid(int infoid){
+        return mapper.getinfobyid(infoid);
+    }
+    public void addinfo(DataInfo info){
+        mapper.addinfo(info);
+    }
 }

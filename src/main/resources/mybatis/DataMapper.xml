@@ -4,4 +4,34 @@
     <select id="getAllDateInfo" resultType="DataInfo">
         SELECT * from DataInfo;
     </select>
+
+    <delete id="delInfo" parameterType="int">
+        DELETE from datainfo where infoid=#{infoid}
+    </delete>
+    <insert id="addinfo" parameterType="DataInfo">
+        INSERT  INTO ( userCode, startCityName, PassCityName, StartName_ch, PassCityName_ch, StartX_axis, StartY_axis, PassX_axis, PassY_axis, DeviceName, Start_deviceInfo, Pass_deviveInfo, creatIndoTime, isdelete) VALUES (#{userCode}, #{startCityName}, #{PassCityName}, #{StartName_ch}, #{PassCityName_ch}, #{StartX_axis, #{StartY_axis, #{PassX_axis, #{PassY_axis}, #{DeviceName}, #{Start_deviceInfo}, #{Pass_deviveInfo}, now(), #{isdelete});
+    </insert>
+    
+    <update id="updateinfo" parameterType="DataInfo">
+        UPDATE datainfo
+        <set>
+            <if test="userCode!=null and userCode!='' "> userCode=#{userCode}</if>
+            <if test="startCityName!=null and startCityName!='' "> startCityName=#{startCityName}</if>
+            <if test="PassCityName!=null and PassCityName!='' "> PassCityName=#{PassCityName}</if>
+            <if test="StartName_ch!=null and StartName_ch!='' "> StartName_ch=#{StartName_ch}</if>
+            <if test="PassCityName_ch!=null and PassCityName_ch!='' "> PassCityName_ch=#{PassCityName_ch}</if>
+            <if test="StartX_axis!=null and StartX_axis!='' "> StartX_axis=#{StartX_axis}</if>
+            <if test="StartY_axis!=null and StartY_axis!='' "> StartY_axis=#{StartY_axis}</if>
+            <if test="PassX_axis!=null and PassX_axis!='' "> PassX_axis=#{PassX_axis}</if>
+            <if test="DeviceName!=null and DeviceName!='' "> DeviceName=#{DeviceName}</if>
+            <if test="Start_deviceInfo!=null and Start_deviceInfo!='' "> Start_deviceInfo=#{Start_deviceInfo}</if>
+            <if test="Pass_deviveInfo!=null and Pass_deviveInfo!='' "> Pass_deviveInfo=#{Pass_deviveInfo}</if>
+            <if test="creatIndoTime!=null and creatIndoTime!='' "> creatIndoTime=#{creatIndoTime}</if>
+            <if test="isdelete!=null and isdelete!='' "> isdelete=#{isdelete}</if>
+        </set>
+        where infoid=#{infoid}
+    </update>
+    <select id="getinfobyid" parameterType="int" resultType="Datainfo">
+        SELECT * from datainfo where infoid=#{infoid} limit 0,1;
+    </select>
 </mapper>
