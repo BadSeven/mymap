@@ -9,7 +9,7 @@
         DELETE from datainfo where infoid=#{infoid}
     </delete>
     <insert id="addinfo" parameterType="DataInfo">
-        INSERT  INTO ( userCode, startCityName, PassCityName, StartName_ch, PassCityName_ch, StartX_axis, StartY_axis, PassX_axis, PassY_axis, DeviceName, Start_deviceInfo, Pass_deviveInfo, creatIndoTime, isdelete) VALUES (#{userCode}, #{startCityName}, #{PassCityName}, #{StartName_ch}, #{PassCityName_ch}, #{StartX_axis, #{StartY_axis, #{PassX_axis, #{PassY_axis}, #{DeviceName}, #{Start_deviceInfo}, #{Pass_deviveInfo}, now(), #{isdelete});
+        INSERT  INTO ( userCode, startCityName, PassCityName, StartName_ch, PassCityName_ch, StartX_axis, StartY_axis, PassX_axis, PassY_axis, DeviceName, Start_deviceInfo, Pass_deviveInfo, creatIndoTime, isdelete) VALUES (#{userCode}, #{startCityName}, #{PassCityName}, #{StartName_ch}, #{PassCityName_ch}, #{StartX_axis}, #{StartY_axis}, #{PassX_axis}, #{PassY_axis}, #{DeviceName}, #{Start_deviceInfo}, #{Pass_deviveInfo}, now(), #{isdelete});
     </insert>
     
     <update id="updateinfo" parameterType="DataInfo">

@@ -6,6 +6,7 @@ import com.yunxi.map.entity.DataInfo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,11 +26,11 @@ public class DataInfoService {
     {
        return mapper.getAllDateInfo();
     }
-
+    @Transactional
     public void delInfo(int infoid){
         mapper.delInfo(infoid);
     }
-
+    @Transactional
     public void updateinfo(DataInfo dataInfo){
         mapper.updateinfo(dataInfo);
     }
@@ -37,6 +38,7 @@ public class DataInfoService {
     public DataInfo getinfobyid(int infoid){
         return mapper.getinfobyid(infoid);
     }
+    @Transactional
     public void addinfo(DataInfo info){
         mapper.addinfo(info);
     }

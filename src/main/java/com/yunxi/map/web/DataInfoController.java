@@ -33,7 +33,7 @@ public class DataInfoController {
 
     @ApiOperation(value = "删除操作",notes = "删除一个info")
     @ApiImplicitParam(name="infoid",value = "info表的id",required = true,dataType = "int")
-    @PostMapping("/delinfo/{infoid}")
+    @GetMapping("/delinfo/{infoid}")
     public HashMap delifno(@PathVariable(name="infoid") int infoid){
         HashMap map = new HashMap();
         try{
@@ -84,9 +84,9 @@ public class DataInfoController {
             @ApiImplicitParam(name="creatIndoTime",value = "查看文档",required = true,dataType = "Date"),
             @ApiImplicitParam(name="isdelete",value = "查看文档",required = true,dataType = "String"),
     })
-    @RequestMapping("/updateinfo/{infoid}/{userCode}/{startCityName}/{PassCityName}/" +
+    @RequestMapping(value = "/updateinfo/{infoid}/{userCode}/{startCityName}/{PassCityName}/" +
             "{StartName_ch}/{PassCityName_ch}/{StartX_axis}/{StartY_axis}/{PassX_axis}/{PassY_axis}/{DeviceName}/" +
-            "{Start_deviceInfo}/{Pass_deviveInfo}/{creatIndoTime}/{isdelete}")
+            "{Start_deviceInfo}/{Pass_deviveInfo}/{creatIndoTime}/{isdelete}" ,method = RequestMethod.GET)
     public HashMap updateinfo(@PathVariable(name="infoid")int infoid,
                               @PathVariable(name="userCode")String userCode,
                               @PathVariable(name="startCityName")String startCityName,
@@ -153,7 +153,7 @@ public class DataInfoController {
             @ApiImplicitParam(name="creatIndoTime",value = "查看文档",required = true,dataType = "Date"),
             @ApiImplicitParam(name="isdelete",value = "查看文档",required = true,dataType = "String"),
     })
-    @PostMapping("/addinfo/{userCode}/{startCityName}/{PassCityName}/" +
+    @GetMapping("/addinfo/{userCode}/{startCityName}/{PassCityName}/" +
             "{StartName_ch}/{PassCityName_ch}/{StartX_axis}/{StartY_axis}/{PassX_axis}/{PassY_axis}/{DeviceName}/" +
             "{Start_deviceInfo}/{Pass_deviveInfo}/{creatIndoTime}/{isdelete}")
     public HashMap addinfo(
@@ -194,7 +194,7 @@ public class DataInfoController {
      * @return
      */
     @ApiOperation(value = "查询操作",notes = "查询一个info")
-    @ApiImplicitParam(name ="infoid",value = "inf表的id",required = true,dataType = "int" )
+    @ApiImplicitParam(name ="infoid",value = "inf表的id",required = true,dataType = "int")
     @GetMapping("/getinfobyid/{infoid}")
     public DataInfo getinfobyid(@PathVariable(name = "infoid") int infoid){
         return service.getinfobyid(infoid);
