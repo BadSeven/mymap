@@ -1,6 +1,5 @@
 package com.yunxi.map.web;
 
-import com.yunxi.map.entity.mUser;
 import com.yunxi.map.service.userService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -9,36 +8,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by MyPC on 2017/12/5.
  */
 @RestController
 public class userController {
-    @Autowired
-    private userService service;
+   @Autowired
+   private userService service;
     @ApiOperation(value = "根据id获取用户信息",notes = "根据id获取用户信息")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "uname", value = "用户名称", required = true, dataType = "String"),
-            @ApiImplicitParam(name = "pass", value = "用户密码", required = true, dataType = "String")
-    })
-    @GetMapping("/user/{uname}/{pass}")
-    public HashMap userLogin(@PathVariable(value = "uname") String uname,
-                             @PathVariable(value = "pass") String pass){
+    @GetMapping("/user")
+    public HashMap userLogin(){
         HashMap map = new HashMap();
         try{
-            mUser user = service.userLogin(uname.trim(),pass.trim());
-            map.put("user",user);
+          List list = service.getall();
+            map.put("user",list);
             map.put("code",1);
             map.put("msg","login success");
         }catch (Exception e){
+            System.out.println(e.getMessage());
             map.put("err",e.getMessage());
             map.put("code",0);
             map.put("msg","login fail");
         }
         return map;
     }
-
+/*
     @ApiOperation(value = "添加用户or用户注册",notes = "添加用户/用户注册")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "uname", value = "用户名称", required = true, dataType = "String"),
@@ -77,5 +73,5 @@ public class userController {
             map.put("msg","login fail");
         }
         return map;
-    }
+    }*/
 }
